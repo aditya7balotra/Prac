@@ -1,0 +1,486 @@
+<lists>:
+    OneLineListItem:
+        id:re_li
+
+
+<check_boxes>:
+    
+    id:boxes
+    orientation:'vertical'
+    spacing:dp(20)
+
+
+    MDBoxLayout:
+        id:some
+        spacing:dp(10)
+        adaptive_height:True
+
+        MDLabel:
+            
+            text:'morning'
+            bold:True
+            adaptive_height:True
+            adaptive_width:True
+
+        MDCheckbox:
+            id:check_btn3
+            adaptive_height:True
+             
+            size_hint_x:.25
+            on_active:app.morning(self)
+            active:False
+
+        MDLabel:
+            text:'noon'
+            adaptive_height:True
+            bold:True
+            adaptive_width:True
+
+        MDCheckbox:
+            id:check_btn4
+            adaptive_height:True
+            size_hint_x:.25
+            on_active:app.noon(self)
+            active:False
+
+        MDLabel:
+            text:'evening/night'
+            bold:True
+            adaptive_height:True
+            adaptive_width:True
+
+        MDCheckbox:
+            id:check_btn5
+            adaptive_height:True
+            size_hint_x:.25
+            on_active:app.evening(self)
+            active:False
+
+    MDRectangleFlatButton:
+        text:'save'
+        md_bg_color:(.1,.2,.3,1)
+        on_release:app.store()
+        pos_hint:{'center_x':.5}
+
+        
+    
+
+
+
+
+MDScreenManager:
+
+
+    MDScreen:
+        name:'home'
+
+        Image:
+            allow_stretch:True
+            opacity:1
+            fit_mode:'fill'
+            source:'IP.jpg'
+
+        MDBoxLayout:
+            orientation:'vertical'
+            spacing:dp(60)
+            adaptive_height:True
+            
+            size_hint_x:home_btn.size_hint_x
+            
+            pos_hint:{'center_x':.5,'center_y':.5}
+
+            MDRectangleFlatButton:
+                id:home_btn
+                text:'add data'
+                on_release:root.current='add_data'
+                size_hint_x:.5
+                md_bg_color:(.1,.2,.3,1)
+                pos_hint:{'center_x':.5}
+                
+
+            MDRectangleFlatButton:
+                text:'previous data'
+                on_release:root.current='previous_data'
+                pos_hint:{'center_x':.5}
+                md_bg_color:(.1,.2,.3,1)
+                size_hint_x:.5
+
+
+    MDScreen:
+        name:'add_data'
+
+        Image:
+            allow_stretch:True
+            opacity:.5
+            source:'OIP.jpg'
+            fit_mode:'fill'
+
+    
+
+        MDBoxLayout:
+            orientation:'vertical'
+            padding:dp(20)
+            spacing:dp(20)
+            
+
+            MDLabel:
+                text:'enter the requirements'
+                bold:True
+                pos_hint:{'top':1}
+                adaptive_height:True
+                halign:'center'
+    
+            
+            MDTextField:
+                id:m_c
+                hint_text:'medical condition'
+                font_size:'25sp'
+                hint_text_color_normal:(0.196, 0.804, 0.196,1)
+                
+                line_color_normal: (0.502, 0.502, 0.0)
+                line_color_focus: (0.196, 0.804, 0.196,1)
+
+                hint_text_color_focus:(0.502, 0.502, 0.0)
+
+                text_color_focus:(1.0, 0.843, 0.0,1)
+                text_color_normal: (0.502, 0.502, 0.0)
+                
+            MDBoxLayout:
+                adaptive_height:True
+
+                MDTextField:
+                    id:dmy
+                    font_size:'25sp'
+                    hint_text_color_normal:(0.196, 0.804, 0.196,1)
+                    
+                    line_color_normal: (0.502, 0.502, 0.0)
+                    line_color_focus: (0.196, 0.804, 0.196,1)
+
+                    hint_text_color_focus:(0.502, 0.502, 0.0)
+
+                    text_color_focus:(1.0, 0.843, 0.0,1)
+                    text_color_normal: (0.502, 0.502, 0.0)
+                    hint_text:'year/month/data'
+                    validator:'date'
+                    date_format: "yyyy/mm/dd"
+
+                MDIconButton:
+                    icon:'calendar'
+                    on_release:app.open_calendar()
+                
+            
+
+            MDGridLayout:
+                spacing:dp(20)
+                cols:2
+
+                MDTextField:
+                    id:man
+                    hint_text:'medical advisor name'
+                    font_size:'25sp'
+                    hint_text_color_normal:(0.196, 0.804, 0.196,1)
+                    
+                    line_color_normal: (0.502, 0.502, 0.0)
+                    line_color_focus: (0.196, 0.804, 0.196,1)
+
+                    hint_text_color_focus:(0.502, 0.502, 0.0)
+
+                    text_color_focus:(1.0, 0.843, 0.0,1)
+                    text_color_normal: (0.502, 0.502, 0.0)
+
+                MDTextField:
+                    id:aa
+                    hint_text:'advisor address'
+                    font_size:'25sp'
+                    hint_text_color_normal:(0.196, 0.804, 0.196,1)
+                    
+                    line_color_normal: (0.502, 0.502, 0.0)
+                    line_color_focus: (0.196, 0.804, 0.196,1)
+
+                    hint_text_color_focus:(0.502, 0.502, 0.0)
+
+                    text_color_focus:(1.0, 0.843, 0.0,1)
+                    text_color_normal: (0.502, 0.502, 0.0)
+
+                MDTextField:
+                    id:mc
+                    hint_text:'money charged'
+                    font_size:'25sp'
+                    input_filter:'float'
+                    hint_text_color_normal:(0.196, 0.804, 0.196,1)
+                    
+                    line_color_normal: (0.502, 0.502, 0.0)
+                    line_color_focus: (0.196, 0.804, 0.196,1)
+
+                    hint_text_color_focus:(0.502, 0.502, 0.0)
+
+                    text_color_focus:(1.0, 0.843, 0.0,1)
+                    text_color_normal: (0.502, 0.502, 0.0)
+
+                MDTextField:
+                    id:an
+                    hint_text:'mobile number'
+                    font_size:'25sp'
+                    max_text_length:10
+                    input_filter:'int'
+                    hint_text_color_normal:(0.196, 0.804, 0.196,1)
+                    
+                    line_color_normal: (0.502, 0.502, 0.0)
+                    line_color_focus: (0.196, 0.804, 0.196,1)
+
+                    hint_text_color_focus:(0.502, 0.502, 0.0)
+
+                    text_color_focus:(1.0, 0.843, 0.0,1)
+                    text_color_normal: (0.502, 0.502, 0.0)
+
+            
+
+            MDLabel:
+                text:'particulars of medicines'
+                halign:'center'
+                bold:True
+                adaptive_height:True
+                
+
+            MDFlatButton:
+                text:'put here'
+                pos_hint:{'center_x':.5}
+                md_bg_color:(.1,.6,.9,.6)
+                on_release:
+                    root.current='med_par'
+                    
+
+            
+
+            
+
+        MDIconButton:
+            icon:'arrow-left'
+            pos_hint:{'top':1}
+            on_release:root.current='home'
+
+                
+
+
+    MDScreen:
+        name:'med_par'
+        id:med_par
+        Image:
+            allow_stretch:True
+            opacity:.5
+            source:'s.jpg'
+            fit_mode:'fill'
+    
+        
+        MDBoxLayout:
+            
+            id:med
+            size_hint_x:.8
+            size_hint_y:.8
+            spacing:dp(30)
+            orientation:'vertical'
+            pos_hint:{'center_x':.5,'center_y':.5}
+            
+            MDTextField:
+                id:med_name
+                hint_text:'medicine name'
+                font_size:'25sp'
+                hint_text_color_normal:(0.196, 0.804, 0.196,1)
+                
+                line_color_normal: (0.502, 0.502, 0.0)
+                line_color_focus: (0.196, 0.804, 0.196,1)
+
+                hint_text_color_focus:(0.502, 0.502, 0.0)
+
+                text_color_focus:(1.0, 0.843, 0.0,1)
+                text_color_normal: (0.502, 0.502, 0.0)
+                
+                size_hint_x:.6
+
+            MDBoxLayout:
+                adaptive_height:True
+                
+                spacing:dp(30)
+                
+
+                MDTextField:
+                    id:dose
+                    hint_text:'dose ml/tablets'
+                    font_size:'25sp'
+                    hint_text_color_normal:(0.196, 0.804, 0.196,1)
+                    
+                    line_color_normal: (0.502, 0.502, 0.0)
+                    line_color_focus: (0.196, 0.804, 0.196,1)
+
+                    hint_text_color_focus:(0.502, 0.502, 0.0)
+
+                    text_color_focus:(1.0, 0.843, 0.0,1)
+                    text_color_normal: (0.502, 0.502, 0.0)
+
+                    
+
+
+                MDBoxLayout:
+                    adaptive_width:True
+                    spacing:dp(50)
+                
+                    MDLabel:
+                        
+                        adaptive_size:True
+                        text:'ml'
+                        bold:True
+                        
+
+                    MDCheckbox:
+                        id:dose_tablets
+                        group:'dose'
+                        adaptive_height:True
+                        on_active:app.ml()
+                        size_hint_x:None
+                        active:False
+
+                MDBoxLayout:
+                    adaptive_width:True
+                    spacing:dp(20)
+
+                    MDLabel:
+                        adaptive_size:True
+                        text:'tablets'
+                        bold:True
+                        
+                    MDCheckbox:
+                        id:dose_ml
+                        group:'dose'
+                        adaptive_height:True
+                        active:False
+                        size_hint_x:None
+                        on_active:app.tablets()
+
+
+            MDBoxLayout:
+                adaptive_height:True
+                spacing:dp(50)
+                
+                
+                
+
+                MDLabel:
+                    text:'dosage schedule:'
+                    bold:True
+                    adaptive_size:True
+                    
+                    
+
+                    
+                MDBoxLayout:
+                    adaptive_height:True
+                    
+
+                    MDCheckbox:
+                        id:check_btn1
+                        group:'meal'
+                        on_active:
+
+                            app.meal_before()
+                            on_active:app.checked()
+                        
+                        adaptive_height:True
+                        size_hint_x:None
+                        active:False
+                    MDLabel:
+                        text:'before meal'
+                        bold:True
+                        adaptive_size:True
+
+
+                    MDCheckbox:
+                        id:check_btn2
+                        group:'meal'
+                        adaptive_height:True
+                        size_hint_x:None
+                        active:False
+
+                        on_active:
+                            app.meal_after()
+                            on_active:app.checked()
+
+                    MDLabel:
+                        bold:True
+                        text:'after meal'
+                        adaptive_size:True
+                        
+
+                
+
+            MDWidget:
+                id:appendix_wid
+
+
+
+
+        MDIconButton:
+            icon:'arrow-left'
+            on_release:root.current='add_data'
+            pos_hint:{'top':1}
+
+        MDRectangleFlatButton:
+            text:'all done'
+            md_bg_color:(.1,.2,.3,1)
+            on_release:
+                root.current='home'
+                app.all_done()
+            pos_hint:{'center_x':.5,'top':.1}
+
+        
+
+
+
+
+    MDScreen:
+        name:'previous_data'
+
+        Image:
+            opacity:.5
+            allow_stretch:True
+            fit_mode:'fill'
+            source:'m.jpg'
+
+        MDBoxLayout:
+            orientation:"vertical"
+            spacing:dp(20)
+
+            MDTopAppBar:
+                title:'Previous records'
+                pos_hint:{'top':1}
+                md_bg_color:(0.5, 0.5, 0.5)
+                elevation:4
+                opacity:.5
+                left_action_items:
+                    [
+                    ['arrow-left',lambda x:app.back(self)]
+                    ]
+
+            MDScrollView:
+                MDList:
+                    spacing:dp(20)
+                    id:record_list
+                    
+
+
+        
+
+        
+    
+        
+
+
+
+            
+        
+
+
+
+
+
+
+                
