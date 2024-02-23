@@ -1,5 +1,9 @@
 # medical_app
 <br>
+
+VERSIONS REQUIRED:<br>
+kivy --->  2.3.0<br>
+kivymd --->  1.1.1<br>
 -----
 <br>
 this is just a try of mine to make a medical app where the user can put all of his/her medical details like the advisor name, fee charged, advisor's address plus the medicines that he has to take with the schedule and also the name of the medicines.
